@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+{{HEAD_EXTRA}}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="{{STYLE_URI}}">
+<title>Vector Drawable Preview</title>
+</head>
+<body>
+{{HARNESS_BAR}}
+<header class="toolbar">
+  <div class="meta">
+    <div class="name" id="fileName">Vector Drawable</div>
+    <div class="dims" id="dims"></div>
+  </div>
+  <div class="controls">
+    <div class="zoom" title="Ctrl+scroll to zoom, double-click to fit">
+      <button id="zoomOut" type="button" title="Zoom out">−</button>
+      <button id="zoomLabel" type="button" title="Fit">Fit</button>
+      <button id="zoomIn" type="button" title="Zoom in">+</button>
+      <button id="fit" type="button" title="Fit">Fit</button>
+    </div>
+    <label class="background">Background
+      <select id="background">
+        <option value="checker">Checkerboard</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+      </select>
+    </label>
+    <button id="night" type="button" aria-pressed="false" title="Use night resources and the dark theme">Night</button>
+    <button id="mirror" type="button" aria-pressed="false" title="Mirror horizontally, as in an RTL layout">Mirror</button>
+    <button id="follow" type="button" aria-pressed="true" title="Follow the active editor">Follow</button>
+    <button id="copy" type="button" title="Copy SVG">Copy SVG</button>
+    <button id="export" type="button" title="Save SVG">Export</button>
+  </div>
+</header>
+<main class="canvas checker" id="canvas">
+  <div class="stage" id="stage">
+    <p class="message">Open a VectorDrawable to preview it.</p>
+  </div>
+</main>
+<footer class="warnings" id="warnings" hidden></footer>
+{{SCRIPT_EXTRA}}
+<script nonce="{{NONCE}}" src="{{SCRIPT_URI}}"></script>
+</body>
+</html>

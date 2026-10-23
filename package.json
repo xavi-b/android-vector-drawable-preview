@@ -1,0 +1,95 @@
+{
+  "name": "android-vector-drawable-preview",
+  "displayName": "Android Vector Drawable Preview",
+  "description": "Preview Android VectorDrawable XML as it appears on device, including groups, clips, gradients, tint, and project colors.",
+  "version": "0.1.0",
+  "publisher": "local",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Visualization"
+  ],
+  "keywords": [
+    "android",
+    "vectordrawable",
+    "vector drawable",
+    "svg",
+    "preview"
+  ],
+  "activationEvents": [
+    "onLanguage:xml"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "androidVectorPreview.open",
+        "title": "Open Preview",
+        "category": "Android Vector Drawable",
+        "icon": "$(eye)"
+      },
+      {
+        "command": "androidVectorPreview.exportSvg",
+        "title": "Export SVG",
+        "category": "Android Vector Drawable"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "androidVectorPreview.open",
+          "when": "androidVectorPreview.isVector && editorLangId == xml",
+          "group": "navigation"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "androidVectorPreview.open",
+          "when": "resourceExtname == .xml",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Android Vector Drawable Preview",
+      "properties": {
+        "androidVectorPreview.background": {
+          "type": "string",
+          "enum": [
+            "checkerboard",
+            "light",
+            "dark"
+          ],
+          "default": "checkerboard",
+          "description": "Default artboard background. Checkerboard makes transparent pixels visible."
+        },
+        "androidVectorPreview.theme": {
+          "type": "string",
+          "enum": [
+            "light",
+            "dark"
+          ],
+          "default": "light",
+          "description": "Initial resource mode. Dark reads values-night and color-night, and uses the dark Material 3 palette for theme attributes the app does not set."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p . --pretty false --noEmit && node esbuild.js",
+    "watch": "node esbuild.js --watch",
+    "test": "tsc -p . --pretty false --noEmit && node esbuild.js --test && node --enable-source-maps --test dist/pathTrim.test.js dist/renderVectorDrawable.test.js dist/resources.test.js",
+    "gallery": "tsc -p . --pretty false --noEmit && node esbuild.js --gallery && node dist/gallery.js"
+  },
+  "dependencies": {
+    "@xmldom/xmldom": "^0.9.8"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/vscode": "^1.85.0",
+    "esbuild": "^0.25.0",
+    "typescript": "^5.6.0"
+  }
+}

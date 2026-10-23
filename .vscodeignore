@@ -1,0 +1,13 @@
+.vscode/**
+src/**
+esbuild.js
+tsconfig.json
+**/*.map
+**/*.ts
+node_modules/**
+.gitignore
+dist/gallery.js
+dist/gallery.js.map
+dist/*.test.js
+dist/*.test.js.map
+dist/preview-harness.html
